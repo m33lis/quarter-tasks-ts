@@ -22,14 +22,14 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-row w-[100%]">
-      <div>
-        <TaskList tasks={tasks} setTasks={setTasks} />
+      <div className="flex flex-row w-[100%]">
+        <div>
+          <TaskList tasks={tasks} setTasks={setTasks} />
+        </div>
+        <div>
+          <Calendar tasks={tasks} />
+        </div>
       </div>
-      <div>
-        <Calendar tasks={tasks} />
-      </div>
-    </div>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TaskList from "./TaskList.tsx";
 import Calendar from "./Calendar.tsx";
 
@@ -10,16 +10,6 @@ export type Task = {
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
-
-  useEffect(() => {
-    setTasks([
-      {
-        name: "Task 1",
-        startDate: "2024-10-10",
-        endDate: "2024-10-12",
-      },
-    ]);
-  }, []);
 
   return (
       <div className="flex flex-row w-[100%]">

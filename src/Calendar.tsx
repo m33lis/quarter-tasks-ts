@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Task } from "./App";
 import dayjs, { Dayjs } from "dayjs";
 import quarterOfYear from "dayjs/plugin/quarterOfYear";
@@ -59,8 +59,6 @@ const Calendar = ({ tasks }: CalendarProps) => {
         if (month === "Dec") {
             return (base.isLeapYear() ? 54 : 53) - base.startOf("month").week();
         }
-
-        console.log(base.endOf("month").week() - base.startOf("month").week());
 
         return base.endOf("month").week() - base.startOf("month").week();
     };
@@ -125,6 +123,27 @@ const Calendar = ({ tasks }: CalendarProps) => {
         return cells;
     };
 
+    const monthCells = useMemo(() => {
+        return monthsVisible?.map((month, index) => {
+            const weekAmount = howManyWeeksPerMonth(month) ?? 4;
+            let colSpan = 'col-span-4';
+
+            if (weekAmount === 3) {
+                colSpan = 'col-span-3';
+            } else if (weekAmount === 5) {
+                colSpan = 'col-span-5';
+            }
+
+            return (<div
+                className={`${colSpan} w-full flex justify-center bg-blue-300`}
+                key={`${month}-${index}`}
+            >
+                {month}
+            </div>)
+        })
+
+    }, [monthsVisible])
+
     return (
         <div className="flex flex-col">
             <div className="grid grid-cols-[repeat(13,_1fr)]">
@@ -159,14 +178,7 @@ const Calendar = ({ tasks }: CalendarProps) => {
             {currentDay && (
                 <>
                     <div className="grid grid-cols-[repeat(13,_1fr)]">
-                        {monthsVisible?.map((month, index) => (
-                            <div
-                                className={`col-span-${howManyWeeksPerMonth(month)} w-full flex justify-center bg-blue-300`}
-                                key={`${month}-${index}`}
-                            >
-                                {month}
-                            </div>
-                        ))}
+                        {monthCells}
                     </div>
 
                     <div className="grid grid-cols-[repeat(13,_1fr)] bg-blue-100">

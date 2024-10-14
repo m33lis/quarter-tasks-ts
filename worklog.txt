@@ -6,5 +6,9 @@
 
 11:00 - 13:00 SharePoint dev env setup (version hell :D)
 13:00 - 16:00 Creating TS version of QuarterTasks
-21:30 -         TaskList, Calendar components
+21:30 - 00:30 TaskList, Calendar components
+
+14-10-2024
+
+10:00 -
 

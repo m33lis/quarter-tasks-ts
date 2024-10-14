@@ -97,7 +97,7 @@ const Calendar = ({ tasks }: CalendarProps) => {
                     : "bg-blue-100";
 
             cells.push(color === "bg-blue-300" ?
-                <HoverCard.Root>
+                <HoverCard.Root key={`${task.name}-${i}-hoverCardRoot`}>
                     <HoverCard.Trigger asChild>
                         <div
                             className={`flex justify-center ${color} border border-solid border-white`}
@@ -107,7 +107,7 @@ const Calendar = ({ tasks }: CalendarProps) => {
                         </div>
                     </HoverCard.Trigger>
                     <HoverCard.Content>
-                        <div className="bg-white rounded p-2">
+                        <div className="bg-white rounded p-2" key={`${task.name}-${i}-hovercard`}>
                             <div>{task.name}</div>
                             <div>Start date: {dayjs(task.startDate).format('MM-DD-YYYY')}</div>
                             <div>End date: {dayjs(task.endDate).format('MM-DD-YYYY')}</div>
@@ -172,10 +172,10 @@ const Calendar = ({ tasks }: CalendarProps) => {
                     <div className="grid grid-cols-[repeat(13,_1fr)] bg-blue-100">
                         {createWeekNumbers()}
                     </div>
-                    {tasks.map((task) => (
+                    {tasks.map((task, index) => (
                         <div
                             className="grid grid-cols-[repeat(13,_1fr)]"
-                            key={`${task.name}-row`}
+                            key={`${task.name}-row-${index}`}
                         >
                             {createCalendarCells(task)}
                         </div>

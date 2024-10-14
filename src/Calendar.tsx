@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Task } from "./App";
 import dayjs, { Dayjs } from "dayjs";
 import quarterOfYear from "dayjs/plugin/quarterOfYear";
@@ -123,26 +123,18 @@ const Calendar = ({ tasks }: CalendarProps) => {
         return cells;
     };
 
-    const monthCells = useMemo(() => {
+    const monthCells = () => {
         return monthsVisible?.map((month, index) => {
-            const weekAmount = howManyWeeksPerMonth(month) ?? 4;
-            let colSpan = 'col-span-4';
-
-            if (weekAmount === 3) {
-                colSpan = 'col-span-3';
-            } else if (weekAmount === 5) {
-                colSpan = 'col-span-5';
-            }
+            const colSpan = howManyWeeksPerMonth(month) === 5 ? 'col-span-5': 'col-span-4';
 
             return (<div
-                className={`${colSpan} w-full flex justify-center bg-blue-300`}
+                className={`${colSpan} w-full flex justify-center bg-blue-300 border border-solid border-white`}
                 key={`${month}-${index}`}
             >
                 {month}
             </div>)
         })
-
-    }, [monthsVisible])
+    }
 
     return (
         <div className="flex flex-col">
@@ -178,7 +170,7 @@ const Calendar = ({ tasks }: CalendarProps) => {
             {currentDay && (
                 <>
                     <div className="grid grid-cols-[repeat(13,_1fr)]">
-                        {monthCells}
+                        {monthCells()}
                     </div>
 
                     <div className="grid grid-cols-[repeat(13,_1fr)] bg-blue-100">

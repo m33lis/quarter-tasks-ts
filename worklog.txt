@@ -5,10 +5,29 @@
 13-10-2024
 
 11:00 - 13:00 SharePoint dev env setup (version hell :D)
-13:00 - 16:00 Creating TS version of QuarterTasks
+13:00 - 16:00 Creating TS version of QuarterTasks pt1
 21:30 - 00:30 TaskList, Calendar components
 
 14-10-2024
 
-10:00 -
+10:00 - 15:00 Bugfixes, styles, ect
+15:30 - 16:15 Meeting
+16:15 - 16:25 update todo
 
+20-10-2024
+20:00 - 20:00 table cell component, more cleanup/division into smaller components, start fixing weeks per month method
+
+21-10-2024
+11:30 - 13:30 Finish fixing week per month method, fix all assorted problems (there can be 12 or 14 weeks in 3 months as well), fixed week start issue
+
+
+TODO:
+
+* Fix date insertion (YYYY-MM-DD -> DD-MM-YYYY)
+* Fix css issues (not full width, does not take into account different screen sizes, table borders)
+* Create a method for showing both next/prev quarter depending on input and use it!
+* i18n
+* Move "magic strings" into constants file (create constants file first)
+* Clean dayjs usage - use one instance per page, etc
+* Format hovercard data so it looks nice
+* Accessibility and SEO

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Task } from "./App";
+import { Task } from "../App";
 import { SubmitHandler, useForm } from "react-hook-form";
 import dayjs from "dayjs";
 import { z } from "zod";

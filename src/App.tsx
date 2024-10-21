@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TaskList from "./TaskList.tsx";
-import Calendar from "./Calendar.tsx";
+import TaskList from "./components/TaskList";
+import Calendar from "./components/Calendar";
 
 export type Task = {
   name: string;
@@ -12,14 +12,10 @@ function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   return (
-      <div className="flex flex-row w-[100%]">
-        <div>
-          <TaskList tasks={tasks} setTasks={setTasks} />
-        </div>
-        <div>
-          <Calendar tasks={tasks} />
-        </div>
-      </div>
+    <div className="flex flex-row">
+      <TaskList tasks={tasks} setTasks={setTasks} />
+      <Calendar tasks={tasks} />
+    </div>
   );
 }
 
